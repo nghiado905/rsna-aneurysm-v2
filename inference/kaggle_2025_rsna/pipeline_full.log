@@ -1,0 +1,11 @@
+2026-01-25 21:49:07,681 - INFO - 🛠️  Đang load Model Phình Mạch (Dataset004)...
+2026-01-25 21:49:12,833 - INFO - ✅ Model Loaded.
+2026-01-25 21:49:12,850 - INFO - Tìm thấy 980 ca cần xử lý.
+2026-01-25 21:49:12,851 - INFO - Temp Dir: C:\Users\MINHNG~1\AppData\Local\Temp\tmp2kjw9d5k
+2026-01-25 21:49:12,853 - INFO - 
+🚀 XỬ LÝ CA: 1.2.826.0.1.3680043.8.498.10005158603912009425635473100344077317
+2026-01-25 21:49:12,854 - INFO -    [1] Convert DICOM: 1.2.826.0.1.3680043.8.498.10005158603912009425635473100344077317
+2026-01-25 21:49:30,701 - INFO -    [2] Segment Mạch máu (Model 113)...
+2026-01-25 21:49:30,740 - DEBUG -        Command: nnUNetv2_predict -d Dataset113_CTMulSegWholeData -i C:\Users\MINHNG~1\AppData\Local\Temp\tmp2kjw9d5k\1.2.826.0.1.3680043.8.498.10005158603912009425635473100344077317\nnunet_seg_input -o C:\Users\MINHNG~1\AppData\Local\Temp\tmp2kjw9d5k\1.2.826.0.1.3680043.8.498.10005158603912009425635473100344077317\masks -f 4 -tr nnUNetTrainer -c 3d_fullres -p nnUNetPlans -chk checkpoint_final.pth --disable_tta -device cuda
+2026-01-25 21:54:54,189 - INFO -    [3] Overlay (+200 HU)...
+2026-01-25 21:54:54,815 - INFO -    [4] Predict Phình Mạch: 1.2.826.0.1.3680043.8.498.10005158603912009425635473100344077317

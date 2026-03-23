@@ -1,0 +1,15 @@
+﻿Label,Precision,Recall,F1
+Aneurysm Present,0.9836065573770492,0.9230769230769231,0.9523809523809523
+Other Posterior Circulation,0.875,0.7777777777777778,0.8235294117647058
+Basilar Tip,1.0,0.7777777777777778,0.875
+Right Posterior Communicating Artery,1.0,0.7777777777777778,0.875
+Left Posterior Communicating Artery,0.8333333333333334,0.8333333333333334,0.8333333333333334
+Right Infraclinoid Internal Carotid Artery,0.8333333333333334,0.7142857142857143,0.7692307692307693
+Left Infraclinoid Internal Carotid Artery,1.0,0.4,0.5714285714285714
+Right Supraclinoid Internal Carotid Artery,1.0,0.5714285714285714,0.7272727272727273
+Left Supraclinoid Internal Carotid Artery,1.0,0.6666666666666666,0.8
+Right Middle Cerebral Artery,1.0,0.7777777777777778,0.875
+Left Middle Cerebral Artery,0.8571428571428571,0.75,0.8
+Right Anterior Cerebral Artery,0.6666666666666666,0.8,0.7272727272727273
+Left Anterior Cerebral Artery,1.0,0.6666666666666666,0.8
+Anterior Communicating Artery,1.0,0.5555555555555556,0.7142857142857143
