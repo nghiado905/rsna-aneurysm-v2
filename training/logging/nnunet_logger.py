@@ -68,12 +68,29 @@ class nnUNetLogger(object):
         ax = ax_all[0]
         ax2 = ax.twinx()
         x_values = list(range(epoch + 1))
-        ax.plot(x_values, self.my_fantastic_logging['train_losses'][:epoch + 1], color='b', ls='-', label="loss_tr", linewidth=4)
-        ax.plot(x_values, self.my_fantastic_logging['val_losses'][:epoch + 1], color='r', ls='-', label="loss_val", linewidth=4)
-        ax2.plot(x_values, self.my_fantastic_logging['mean_fg_dice'][:epoch + 1], color='g', ls='dotted', label="pseudo dice",
-                 linewidth=3)
-        ax2.plot(x_values, self.my_fantastic_logging['ema_fg_dice'][:epoch + 1], color='g', ls='-', label="pseudo dice (mov. avg.)",
-                 linewidth=4)
+        train_losses = np.asarray(self.my_fantastic_logging['train_losses'][:epoch + 1], dtype=float)
+        val_losses = np.asarray(self.my_fantastic_logging['val_losses'][:epoch + 1], dtype=float)
+        mean_fg_dice = np.asarray(self.my_fantastic_logging['mean_fg_dice'][:epoch + 1], dtype=float)
+        ema_fg_dice = np.asarray(self.my_fantastic_logging['ema_fg_dice'][:epoch + 1], dtype=float)
+
+        valid_val = np.isfinite(val_losses)
+        valid_mean = np.isfinite(mean_fg_dice)
+        valid_ema = np.isfinite(ema_fg_dice)
+
+        ax.plot(x_values, train_losses, color='b', ls='-', label="loss_tr", linewidth=4)
+        if np.any(valid_val):
+            val_x = np.asarray(x_values)[valid_val]
+            ax.plot(val_x, val_losses[valid_val], color='r', ls='--', linewidth=2, alpha=0.8)
+            ax.scatter(val_x, val_losses[valid_val], color='r', s=90, label="loss_val", zorder=5)
+        if np.any(valid_mean):
+            mean_x = np.asarray(x_values)[valid_mean]
+            ax2.plot(mean_x, mean_fg_dice[valid_mean], color='g', ls='dotted', label="pseudo dice",
+                     linewidth=3)
+            ax2.scatter(mean_x, mean_fg_dice[valid_mean], color='g', s=70, alpha=0.7, zorder=5)
+        if np.any(valid_ema):
+            ema_x = np.asarray(x_values)[valid_ema]
+            ax2.plot(ema_x, ema_fg_dice[valid_ema], color='g', ls='-', label="pseudo dice (mov. avg.)",
+                     linewidth=4)
         ax.set_xlabel("epoch")
         ax.set_ylabel("loss")
         ax2.set_ylabel("pseudo dice")
